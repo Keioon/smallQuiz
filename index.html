@@ -10,13 +10,34 @@
 <body>
   <main class="container">
     <header>
-      
+      <h1>HTML Quiz</h1>
+      <div class="progressBar">
+        <progress value="100" max="100"></progress>
+      </div>
+      <p>20% progress</p>
     </header>
     <section>
-
+      <div class="questionBox">
+        <h3 class="question">What does this code do?</h3>
+        <pre>
+          &lt;audio controls&gt;
+            &lt;source src='sound.mp3' type="audio/mpeg"&gt;
+            &lt;source src='sound.ogg' type="audio/ogg"&gt;
+            &lt;source src='sound.wav' type="audio/wav"&gt;
+          &lt;/audio&gt;
+        </pre>
+      </div>
+      <div class="answerBox">
+        <ul>
+          <li><button class="answer" value="a">The browser choose the best audio format to play with JavaScript-provided controls.</button></li>
+          <li><button class="answer" value="b">The browser choose the first supported sound file and will loop the sound until the user stop it.</button></li>
+          <li><button class="answer" value="c">The browser choose the first supported format to play with the browser's default controls.</button></li>
+          <li><button class="answer" value="d">The browser plays each sound file in order automatically. The user has controls to stop playback.</button></li>
+        </ul>
+      </div>
     </section>
     <footer>
-
+      <button>Next question</button>
     </footer>
   </main>
 </body>

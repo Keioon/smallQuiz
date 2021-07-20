@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: #e9e9e9;
+  background-color: #5F9F9F;
   width: 100%;
   height: 100%;
   text-align: center;
@@ -19,7 +19,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border: 1px gray solid;
+  border: 1px #D9D9F3 solid;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -29,19 +29,105 @@ body {
 .container header {
   width: 100%;
   display: block;
-  -webkit-box-flex: 3;
-      -ms-flex-positive: 3;
-          flex-grow: 3;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  background-color: #efefef;
+}
+
+.container header h1 {
+  padding-top: 10px;
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 40px;
+}
+
+.container header .progressBar {
+  width: 30%;
+  margin: 10px auto;
+  text-align: left;
+}
+
+.container header .progressBar progress {
+  padding: 10px;
+  width: 40%;
+  z-index: 2;
+  background-color: green;
+  border-radius: 10px;
+}
+
+.container header p {
+  font-weight: bold;
 }
 
 .container section {
   width: 100%;
-  border-top: 1px gray solid;
-  border-bottom: 1px gray solid;
-  display: block;
+  border-top: 1px #D9D9F3 solid;
+  border-bottom: 1px #D9D9F3 solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #fbfbfb;
   -webkit-box-flex: 6;
       -ms-flex-positive: 6;
           flex-grow: 6;
+  text-align: left;
+}
+
+.container section .questionBox {
+  padding: 20px;
+}
+
+.container section .questionBox h3 {
+  padding: 10px;
+}
+
+.container section .answerBox {
+  justify-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.container section .answerBox ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.container section .answerBox ul li {
+  list-style-type: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 25%;
+}
+
+.container section .answerBox ul li button {
+  width: 100%;
+  border-radius: 20px;
+  padding: 5px 0;
+  border: none;
+  background-color: royalblue;
+  margin: auto;
+  color: white;
+}
+
+.container section .answerBox ul li button:hover {
+  cursor: pointer;
+  opacity: 0.9;
 }
 
 .container footer {
@@ -50,5 +136,30 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  background-color: #efefef;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container footer button {
+  margin-right: 50px;
+  border-radius: 20px;
+  width: 100px;
+  height: 40px;
+  background-color: royalblue;
+  border: none;
+  color: white;
+}
+
+.container footer button:hover {
+  cursor: pointer;
+  opacity: 0.9;
 }
 /*# sourceMappingURL=style.css.map */
