@@ -120,14 +120,18 @@ body {
   border-radius: 20px;
   padding: 5px 0;
   border: none;
-  background-color: royalblue;
+  background-color: lightgray;
   margin: auto;
-  color: white;
 }
 
 .container section .answerBox ul li button:hover {
   cursor: pointer;
   opacity: 0.9;
+}
+
+.container section .answerBox ul li .choosen {
+  background-color: royalblue;
+  color: white;
 }
 
 .container footer {

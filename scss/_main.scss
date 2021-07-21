@@ -92,14 +92,18 @@ body {
             border-radius: 20px;
             padding: 5px 0;
             border: none;
-            background-color: $button-color;
+            background-color: lightgray;
             margin: auto;
-            color: $font-color;
 
             &:hover {
               cursor: pointer;
               opacity: 0.9;
             }
+          }
+
+          .choosen {
+            background-color: $button-color;
+            color: $font-color;
           }
         }
       }
