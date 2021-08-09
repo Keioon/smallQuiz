@@ -1,17 +1,11 @@
-const nextButton = document.querySelector('.nextQuestion');
-let progress = 0;
-let idOfQuestion = 0;
+let progress;
+let idOfQuestion;
 const arrayOfAnswers = [];
 const main = document.querySelector('main');
 const header = document.querySelector('header');
-const footer = document.querySelector('footer');
-const section = document.querySelector('section');
-const h3 = document.querySelector('.questionBox h3');
-const questionBoxPre = document.querySelector('.questionBox pre');
-const liOne = document.querySelector('ul li:nth-of-type(1) button');
-const liTwo = document.querySelector('ul li:nth-of-type(2) button');
-const liThree = document.querySelector('ul li:nth-of-type(3) button');
-const liFour = document.querySelector('ul li:nth-of-type(4) button');
+let restartBtn;
+let answerButtons;
+let nextButton;
 
 function progressAktualization(progress) {
   document.querySelector(".container p").innerHTML = `${progress}% progress`;
@@ -74,9 +68,49 @@ const addColorOfStatus = () => {
   })
 }
 
+const sectionsRemove = () => {
+  document.querySelectorAll('section').forEach(sect => {
+    sect.remove();
+  });
+}
+
+const quizRestart = () =>{
+  document.querySelector('footer').remove();
+  sectionsRemove();
+  arrayOfAnswers.length = 0;
+  const section = document.createElement('section');
+  section.innerHTML = 
+    `<div class="questionBox">
+    <h3 class="question">${dataSources.questions[0].txt}</h3>
+      <pre>
+        ${dataSources.questions[0].pre}
+      </pre>
+    </div>
+    <div class="answerBox">
+      <ul>
+        <li><button class="a">${dataSources.questions[0].answers.a}</button></li>
+        <li><button class="b">${dataSources.questions[0].answers.b}</button></li>
+        <li><button class="c">${dataSources.questions[0].answers.c}</button></li>
+        <li><button class="d">${dataSources.questions[0].answers.d}</button></li>
+      </ul>
+    </div>`;
+  main.appendChild(section);
+  document.querySelector('header h2').remove();
+  startAplication();
+}
+
+const renderFooter = (state) => {
+  const footer = document.createElement('footer');
+  footer.innerHTML = `<button class=${state==0 ? '"nextQuestion">Next question':'"restartQuiz">Try again'}</button>`;
+  main.appendChild(footer);
+  restartBtn = document.querySelector('.restartQuiz');
+  if(restartBtn)
+  restartBtn.addEventListener('click', quizRestart);
+}
+
 const showAllAnswers = () => {
-  footer.remove();
-  section.remove();
+  document.querySelector('footer').remove();
+  sectionsRemove();
   console.log('odp', arrayOfAnswers);
   let result = 0;
   arrayOfAnswers.forEach(el => {
@@ -104,36 +138,47 @@ const showAllAnswers = () => {
       result++;
     }
   });
-  const p = document.createElement('p');
-  p.innerHTML = `You get: ${result} points`
-  header.appendChild(p);
+  const h2 = document.createElement('h2');
+  h2.innerHTML = `You get: ${result} points`;
+  header.appendChild(h2);
+  renderFooter(1);
   addColorOfStatus();
 }
 
-nextButton.addEventListener('click', function(){
-  progress += 10;
-  removingClassChoosen((progress/10)-1);
-  if(progress == 100){
-    progressAktualization(progress);
-    return showAllAnswers(); 
-  } else {
-    progressAktualization(progress);
-    idOfQuestion++;
-    changingQuestionOnNext(idOfQuestion); 
-  }
-});
+const startAplication = () =>{
+  progress = 0;
+  idOfQuestion = 0;
+  progressAktualization(progress);
+  renderFooter(0);
 
-const answerButtons = document.querySelectorAll('li button');
+  nextButton = document.querySelector('.nextQuestion');
 
-for(let i=0; i<answerButtons.length; i++) {
-  answerButtons[i].addEventListener('click', function () {
-    answerButtons[i].classList.toggle('choosen');
-    for(let j=0; j<answerButtons.length; j++){
-      if(j!=i){
-        answerButtons[j].classList.remove('choosen');
-      }
+  nextButton.addEventListener('click', function(){
+    progress += 10;
+    removingClassChoosen((progress/10)-1);
+    if(progress == 100){
+      progressAktualization(progress);
+      return showAllAnswers(); 
+    } else {
+      progressAktualization(progress);
+      idOfQuestion++;
+      changingQuestionOnNext(idOfQuestion); 
     }
   });
+
+  answerButtons = document.querySelectorAll('li button');
+
+  for(let i=0; i<answerButtons.length; i++) {
+    answerButtons[i].addEventListener('click', function () {
+      answerButtons[i].classList.toggle('choosen');
+      for(let j=0; j<answerButtons.length; j++){
+        if(j!=i){
+          answerButtons[j].classList.remove('choosen');
+        }
+      }
+    });
+  }
+  changingQuestionOnNext(0);
 }
 
-changingQuestionOnNext(0);
+startAplication();
