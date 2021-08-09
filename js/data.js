@@ -89,7 +89,7 @@ dataSources.questions = [
       c: 'In Html we dont have inline elements',
       d: 'Inline elements can not change font size'
     },
-    correctAnswer: 'b',
+    correctAnswer: 'a',
     givenAnswer: ''
   },
   {
@@ -102,7 +102,7 @@ dataSources.questions = [
       c: 'slider',
       d: 'search'
     },
-    correctAnswer: 'c',
+    correctAnswer: 'a',
     givenAnswer: ''
   },
   {
