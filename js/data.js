@@ -11,7 +11,8 @@ dataSources.questions = [
       c: '&lt;style href="style.css"&gt;&lt;/style&gt;',
       d: '&lt;link rel="stylesheet" href="css/style.css"&gt;'
     },
-    correctAnswer: 'd'
+    correctAnswer: 'd',
+    givenAnswer: ''
   },
   {
     id: '1',
@@ -23,7 +24,8 @@ dataSources.questions = [
       c: 'Cascading Style Sheets',
       d: 'Computer Style Sheets'
     },
-    correctAnswer: 'c'
+    correctAnswer: 'c',
+    givenAnswer: ''
   },
   {
     id: '2',
@@ -35,7 +37,8 @@ dataSources.questions = [
       c: 'Hyper Text Markup Language',
       d: 'Home Text Mixed Language'
     },
-    correctAnswer: 'c'
+    correctAnswer: 'c',
+    givenAnswer: ''
   },
   {
     id: '3',
@@ -47,7 +50,8 @@ dataSources.questions = [
       c: 'Microsoft',
       d: 'Mozilla'
     },
-    correctAnswer: 'a'
+    correctAnswer: 'a',
+    givenAnswer: ''
   },
   {
     id: '4',
@@ -59,7 +63,8 @@ dataSources.questions = [
       c: '^',
       d: '/'
     },
-    correctAnswer: 'd'
+    correctAnswer: 'd',
+    givenAnswer: ''
   },
   {
     id: '5',
@@ -71,7 +76,8 @@ dataSources.questions = [
       c: 'style',
       d: 'font'
     },
-    correctAnswer: 'c'
+    correctAnswer: 'c',
+    givenAnswer: ''
   },
   {
     id: '6',
@@ -83,7 +89,8 @@ dataSources.questions = [
       c: 'In Html we dont have inline elements',
       d: 'Inline elements can not change font size'
     },
-    correctAnswer: 'b'
+    correctAnswer: 'b',
+    givenAnswer: ''
   },
   {
     id: '7',
@@ -95,7 +102,8 @@ dataSources.questions = [
       c: 'slider',
       d: 'search'
     },
-    correctAnswer: 'c'
+    correctAnswer: 'c',
+    givenAnswer: ''
   },
   {
     id: '8',
@@ -107,7 +115,8 @@ dataSources.questions = [
       c: 'required',
       d: 'validate'
     },
-    correctAnswer: 'c'
+    correctAnswer: 'c',
+    givenAnswer: ''
   },
   {
     id: '9',
@@ -119,6 +128,26 @@ dataSources.questions = [
       c: 'longdesc',
       d: 'alt'
     },
-    correctAnswer: 'd'
+    correctAnswer: 'd',
+    givenAnswer: ''
   },
+  {
+    id: '10',
+    txt: 'What does this code do?',
+    pre: `<pre>
+            &lt;audio controls&gt;
+              &lt;source src='sound.mp3' type="audio/mpeg"&gt;
+              &lt;source src='sound.ogg' type="audio/ogg"&gt;
+              &lt;source src='sound.wav' type="audio/wav"&gt;
+            &lt;/audio&gt;
+          </pre>`,
+    answers: {
+      a: 'The browser choose the best audio format to play with JavaScript-provided controls.',
+      b: 'The browser choose the first supported sound file and will loop the sound until the user stop it.',
+      c: "The browser choose the first supported format to play with the browser's default controls.",
+      d: "The browser plays each sound file in order automatically. The user has controls to stop playback."
+    },
+    correctAnswer: 'c',
+    givenAnswer: ''
+  }
 ];
