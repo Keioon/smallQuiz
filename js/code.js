@@ -1,5 +1,4 @@
 let progress;
-let idOfQuestion;
 const arrayOfAnswers = [];
 const main = document.querySelector('main');
 const header = document.querySelector('header');
@@ -12,6 +11,19 @@ function progressAktualization(progress) {
   document.querySelector(".progressBar progress").style.width = `${progress}%`;
 };
 
+function drawQuestion() {
+  let random;
+  do {
+    random = Math.floor(Math.random() * dataSources.questions.length);
+    arrayOfAnswers.forEach(el => {
+      if(el.id == random) {
+        random = null;
+      }
+    }); 
+  } while (random == null);
+  return random;
+};
+
 function changingQuestionOnNext(id) {
  // console.log(document.querySelector('.questionBox h3'));
   document.querySelector('.questionBox h3').innerHTML = dataSources.questions[id].txt;
@@ -22,33 +34,22 @@ function changingQuestionOnNext(id) {
   document.querySelector('ul li:nth-of-type(4) button').innerHTML = dataSources.questions[id].answers.d;
 }
 
-function removingClassChoosen(index) { 
-  arrayOfAnswers.push(dataSources.questions[index]);
+function removingClassChoosen(id) { 
+  arrayOfAnswers.push(dataSources.questions[id]);
   for(button of answerButtons) {
     if(button.classList.contains('choosen')) {
-      dataSources.questions[index].givenAnswer = button.classList;
+      dataSources.questions[id].givenAnswer = button.classList;
       button.classList.remove('choosen');
     }
   }
-
-  // for(let i=0; i<answerButtons.length; i++) {
-  //   if(answerButtons[i].classList.contains('choosen')) {
-  //     console.log('odp', answerButtons[i]);
-  //     dataSources.questions[index].givenAnswer = answerButtons[i].value;
-  //     console.log(dataSources.questions[index].givenAnswer);
-  //     answerButtons[i].classList.remove("choosen");
-  //   }
-  // }
 }
 
 const addColorOfStatus = () => {
   const sections = document.querySelectorAll('section');
-  console.log('sections',sections)
-  sections.forEach(section => {
-    console.log(section);
+  sections.forEach((section, id)=> {
     const buttons = section.querySelectorAll(`button`);
-    const givenAnswer = arrayOfAnswers[section.classList].givenAnswer;
-    const correctAnswer = arrayOfAnswers[section.classList].correctAnswer;
+    const givenAnswer = arrayOfAnswers[id].givenAnswer;
+    const correctAnswer = arrayOfAnswers[id].correctAnswer;
     if(givenAnswer == correctAnswer){
       buttons.forEach(button => {
         if(button.classList.contains(correctAnswer)){
@@ -64,7 +65,6 @@ const addColorOfStatus = () => {
         }
       })
     }
-    console.log('but',buttons);
   })
 }
 
@@ -79,19 +79,20 @@ const quizRestart = () =>{
   sectionsRemove();
   arrayOfAnswers.length = 0;
   const section = document.createElement('section');
+  idOfQuestion = drawQuestion();
   section.innerHTML = 
     `<div class="questionBox">
-    <h3 class="question">${dataSources.questions[0].txt}</h3>
+    <h3 class="question">${dataSources.questions[idOfQuestion].txt}</h3>
       <pre>
-        ${dataSources.questions[0].pre}
+        ${dataSources.questions[idOfQuestion].pre}
       </pre>
     </div>
     <div class="answerBox">
       <ul>
-        <li><button class="a">${dataSources.questions[0].answers.a}</button></li>
-        <li><button class="b">${dataSources.questions[0].answers.b}</button></li>
-        <li><button class="c">${dataSources.questions[0].answers.c}</button></li>
-        <li><button class="d">${dataSources.questions[0].answers.d}</button></li>
+        <li><button class="a">${dataSources.questions[idOfQuestion].answers.a}</button></li>
+        <li><button class="b">${dataSources.questions[idOfQuestion].answers.b}</button></li>
+        <li><button class="c">${dataSources.questions[idOfQuestion].answers.c}</button></li>
+        <li><button class="d">${dataSources.questions[idOfQuestion].answers.d}</button></li>
       </ul>
     </div>`;
   main.appendChild(section);
@@ -111,10 +112,8 @@ const renderFooter = (state) => {
 const showAllAnswers = () => {
   document.querySelector('footer').remove();
   sectionsRemove();
-  console.log('odp', arrayOfAnswers);
   let result = 0;
   arrayOfAnswers.forEach(el => {
-    console.log(el);
     const section = document.createElement('section');
     section.classList.add(el.id);
     section.innerHTML = 
@@ -147,22 +146,22 @@ const showAllAnswers = () => {
 
 const startAplication = () =>{
   progress = 0;
-  idOfQuestion = 0;
   progressAktualization(progress);
   renderFooter(0);
+  let next = drawQuestion();
 
   nextButton = document.querySelector('.nextQuestion');
 
   nextButton.addEventListener('click', function(){
     progress += 10;
-    removingClassChoosen((progress/10)-1);
+    removingClassChoosen(next);
     if(progress == 100){
       progressAktualization(progress);
       return showAllAnswers(); 
     } else {
+      next = drawQuestion();
       progressAktualization(progress);
-      idOfQuestion++;
-      changingQuestionOnNext(idOfQuestion); 
+      changingQuestionOnNext(next); 
     }
   });
 
@@ -178,7 +177,7 @@ const startAplication = () =>{
       }
     });
   }
-  changingQuestionOnNext(0);
+  changingQuestionOnNext(next);
 }
 
 startAplication();

@@ -4,7 +4,7 @@ dataSources.questions = [
   {
     id: '0',
     txt: 'What is the correct HTML for referring to an external style sheet?',
-    pre: " ",
+    pre: "",
     answers: {
       a: '&lt;style src="style.css"&gt;&lt;/style&gt;', 
       b: '&lt;stylesheet&gt;style.css&lt;/stylesheet&gt;',
@@ -17,7 +17,7 @@ dataSources.questions = [
   {
     id: '1',
     txt: 'What does CSS stand for?',
-    pre: " ",
+    pre: "",
     answers: {
       a: 'Creative Style Sheet',
       b: 'Colorful Style Sheet',
@@ -30,7 +30,7 @@ dataSources.questions = [
   {
     id: '2',
     txt: 'What does HTML stand for?',
-    pre: " ",
+    pre: "",
     answers: {
       a: 'Hyperlinks and Text Markup Language',
       b: 'Home Tool Markup Language',
@@ -43,7 +43,7 @@ dataSources.questions = [
   {
     id: '3',
     txt: 'Who is making the Web standards?',
-    pre: " ",
+    pre: "",
     answers: {
       a: 'The World Wide Web Consortium',
       b: 'Google',
@@ -56,7 +56,7 @@ dataSources.questions = [
   {
     id: '4',
     txt: 'Which character is used to indicate an end tag?',
-    pre: " ",
+    pre: "",
     answers: {
       a: '<',
       b: '*',
@@ -69,7 +69,7 @@ dataSources.questions = [
   {
     id: '5',
     txt: 'Which HTML attribute is used to define inline styles?',
-    pre: " ",
+    pre: "",
     answers: {
       a: 'class',
       b: 'styles',
@@ -82,7 +82,7 @@ dataSources.questions = [
   {
     id: '6',
     txt: 'Inline elements are normally displayed without starting a new line.',
-    pre: " ",
+    pre: "",
     answers: {
       a: 'False',
       b: 'True',
@@ -95,7 +95,7 @@ dataSources.questions = [
   {
     id: '7',
     txt: 'Which input type defines a slider control?',
-    pre: " ",
+    pre: "",
     answers: {
       a: 'range',
       b: 'controls',
@@ -108,7 +108,7 @@ dataSources.questions = [
   {
     id: '8',
     txt: 'In HTML, which attribute is used to specify that an input field must be filled out?',
-    pre: " ",
+    pre: "",
     answers: {
       a: 'placeholder',
       b: 'formvalidate',
@@ -121,7 +121,7 @@ dataSources.questions = [
   {
     id: '9',
     txt: 'Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?',
-    pre: " ",
+    pre: "",
     answers: {
       a: 'title',
       b: 'src',
